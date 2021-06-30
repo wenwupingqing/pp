@@ -1,0 +1,27 @@
+<?php
+    //初始化
+    $curl=curl_init();
+    //设置抓取的url
+    curl_setopt($curl,CURLOPT_URL,'http://mall-bsy.vxwei.com/cmobile/index.php?app=cart&mod=add');
+    //设置头文件的信息为数据流输出
+    curl_setopt($curl,CURLOPT_HEADER,0);
+    //设置获取的信息以文件流的形式返回，而不是直接输出
+    curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+    //设置post方式提交
+    curl_setopt($curl,CURLOPT_POST,1);
+    //设置post数据
+    $post_data=array(
+    "goods_type"=>"1",
+    "gid"=>"501",
+    "quantity"=>"1",
+    "cart_type"=>"2",
+    "key"=>"2d2fc12909eaaa0be5e95117e1571c0a"
+    );
+    curl_setopt($curl,CURLOPT_POSTFIELDS,$post_data);
+    //执行命令
+    $result=curl_exec($curl);
+    //关闭url请求
+    curl_close($curl);
+    //显示获得的数据
+    print_r($result);
+
